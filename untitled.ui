@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1087</width>
-    <height>600</height>
+    <width>441</width>
+    <height>702</height>
    </rect>
   </property>
   <property name="font">
@@ -43,7 +43,7 @@ color:white;</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../../../Users/acer/Downloads/music.png</pixmap>
+            <pixmap>imagion/music.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -125,7 +125,7 @@ border-radius:10px;</string>
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>../../../Users/acer/Downloads/player-skip-back.png</normaloff>../../../Users/acer/Downloads/player-skip-back.png</iconset>
+            <normaloff>imagion/player-skip-back.png</normaloff>imagion/player-skip-back.png</iconset>
           </property>
          </widget>
          <widget class="QPushButton" name="pushButton_2">
@@ -149,7 +149,7 @@ border-radius:5px;
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>../../../Users/acer/Downloads/player-play.png</normaloff>../../../Users/acer/Downloads/player-play.png</iconset>
+            <normaloff>imagion/player-play.png</normaloff>imagion/player-play.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -178,7 +178,7 @@ border-radius:10px;</string>
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>../../../Users/acer/Downloads/player-skip-forward.png</normaloff>../../../Users/acer/Downloads/player-skip-forward.png</iconset>
+            <normaloff>imagion/player-skip-forward.png</normaloff>imagion/player-skip-forward.png</iconset>
           </property>
          </widget>
         </widget>
