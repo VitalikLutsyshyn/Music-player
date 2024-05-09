@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>733</width>
-    <height>827</height>
+    <height>828</height>
    </rect>
   </property>
   <property name="font">
@@ -21,8 +21,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:rgb(77, 74, 73);
-color:white;</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -91,6 +90,11 @@ color:white;</string>
                  <width>16777215</width>
                  <height>50</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <kerning>true</kerning>
+                </font>
                </property>
                <property name="text">
                 <string>Назва пісні</string>
@@ -202,10 +206,7 @@ color:white;</string>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background:rgb(97, 89, 89);
-border:3px solidrgb(255, 255, 255);
-color:white;
-border-radius:10px;</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>
@@ -231,11 +232,7 @@ border-radius:10px;</string>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background:rgb(97, 89, 89);
-border:3px solidrgb(255, 255, 255);
-color:white;
-border-radius:5px;
-</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>
@@ -267,10 +264,7 @@ border-radius:5px;
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background:rgb(97, 89, 89);
-border:3px solidrgb(255, 255, 255);
-color:white;
-border-radius:10px;</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>

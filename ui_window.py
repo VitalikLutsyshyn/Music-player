@@ -24,13 +24,12 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(733, 827)
+        MainWindow.resize(733, 828)
         font = QFont()
         font.setPointSize(10)
         font.setBold(True)
         MainWindow.setFont(font)
-        MainWindow.setStyleSheet(u"background:rgb(77, 74, 73);\n"
-"color:white;")
+        MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
@@ -75,6 +74,9 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.song_name.sizePolicy().hasHeightForWidth())
         self.song_name.setSizePolicy(sizePolicy2)
         self.song_name.setMaximumSize(QSize(16777215, 50))
+        font1 = QFont()
+        font1.setKerning(True)
+        self.song_name.setFont(font1)
 
         self.verticalLayout.addWidget(self.song_name)
 
@@ -83,9 +85,9 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.artist.sizePolicy().hasHeightForWidth())
         self.artist.setSizePolicy(sizePolicy2)
         self.artist.setMaximumSize(QSize(16777215, 50))
-        font1 = QFont()
-        font1.setBold(False)
-        self.artist.setFont(font1)
+        font2 = QFont()
+        font2.setBold(False)
+        self.artist.setFont(font2)
 
         self.verticalLayout.addWidget(self.artist)
 
@@ -137,10 +139,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.prev_btn.sizePolicy().hasHeightForWidth())
         self.prev_btn.setSizePolicy(sizePolicy3)
         self.prev_btn.setMaximumSize(QSize(50, 50))
-        self.prev_btn.setStyleSheet(u"background:rgb(97, 89, 89);\n"
-"border:3px solidrgb(255, 255, 255);\n"
-"color:white;\n"
-"border-radius:10px;")
+        self.prev_btn.setStyleSheet(u"")
         icon = QIcon()
         icon.addFile(u"imagion/player-skip-back.png", QSize(), QIcon.Normal, QIcon.Off)
         self.prev_btn.setIcon(icon)
@@ -152,11 +151,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.play_btn.sizePolicy().hasHeightForWidth())
         self.play_btn.setSizePolicy(sizePolicy3)
         self.play_btn.setMaximumSize(QSize(200, 50))
-        self.play_btn.setStyleSheet(u"background:rgb(97, 89, 89);\n"
-"border:3px solidrgb(255, 255, 255);\n"
-"color:white;\n"
-"border-radius:5px;\n"
-"")
+        self.play_btn.setStyleSheet(u"")
         icon1 = QIcon()
         icon1.addFile(u"imagion/player-play.png", QSize(), QIcon.Normal, QIcon.Off)
         self.play_btn.setIcon(icon1)
@@ -169,10 +164,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.next_btn.sizePolicy().hasHeightForWidth())
         self.next_btn.setSizePolicy(sizePolicy3)
         self.next_btn.setMaximumSize(QSize(50, 50))
-        self.next_btn.setStyleSheet(u"background:rgb(97, 89, 89);\n"
-"border:3px solidrgb(255, 255, 255);\n"
-"color:white;\n"
-"border-radius:10px;")
+        self.next_btn.setStyleSheet(u"")
         icon2 = QIcon()
         icon2.addFile(u"imagion/player-skip-forward.png", QSize(), QIcon.Normal, QIcon.Off)
         self.next_btn.setIcon(icon2)
