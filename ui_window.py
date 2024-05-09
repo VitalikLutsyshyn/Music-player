@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QLayout, QMainWindow, QPushButton, QSizePolicy,
-    QSlider, QSpacerItem, QTabWidget, QVBoxLayout,
-    QWidget)
+    QLayout, QListWidget, QListWidgetItem, QMainWindow,
+    QPushButton, QSizePolicy, QSlider, QSpacerItem,
+    QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -47,6 +47,22 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tabs.sizePolicy().hasHeightForWidth())
         self.tabs.setSizePolicy(sizePolicy)
+        self.all_song = QWidget()
+        self.all_song.setObjectName(u"all_song")
+        self.verticalLayout_5 = QVBoxLayout(self.all_song)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.addFolder = QPushButton(self.all_song)
+        self.addFolder.setObjectName(u"addFolder")
+        self.addFolder.setMaximumSize(QSize(160, 16777215))
+
+        self.verticalLayout_5.addWidget(self.addFolder)
+
+        self.songlist = QListWidget(self.all_song)
+        self.songlist.setObjectName(u"songlist")
+
+        self.verticalLayout_5.addWidget(self.songlist)
+
+        self.tabs.addTab(self.all_song, "")
         self.now_playing = QWidget()
         self.now_playing.setObjectName(u"now_playing")
         self.verticalLayout_4 = QVBoxLayout(self.now_playing)
@@ -95,9 +111,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addLayout(self.verticalLayout)
 
         self.tabs.addTab(self.now_playing, "")
-        self.all_song = QWidget()
-        self.all_song.setObjectName(u"all_song")
-        self.tabs.addTab(self.all_song, "")
 
         self.verticalLayout_2.addWidget(self.tabs)
 
@@ -193,11 +206,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.addFolder.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0434\u0430\u0442\u0438 \u043f\u0430\u043f\u043a\u0443 ", None))
+        self.tabs.setTabText(self.tabs.indexOf(self.all_song), QCoreApplication.translate("MainWindow", u"\u0423\u0441\u0456 \u043f\u0456\u0441\u043d\u0456", None))
         self.song_img.setText("")
         self.song_name.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0432\u0430 \u043f\u0456\u0441\u043d\u0456", None))
         self.artist.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u043a\u043e\u043d\u0430\u0432\u0435\u0446\u044c:", None))
         self.tabs.setTabText(self.tabs.indexOf(self.now_playing), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0440\u0430\u0437 \u0433\u0440\u0430\u0454", None))
-        self.tabs.setTabText(self.tabs.indexOf(self.all_song), QCoreApplication.translate("MainWindow", u"\u0423\u0441\u0456 \u043f\u0456\u0441\u043d\u0456", None))
         self.total_time.setText(QCoreApplication.translate("MainWindow", u"0:00", None))
         self.current_time.setText(QCoreApplication.translate("MainWindow", u"0:00", None))
         self.prev_btn.setText("")

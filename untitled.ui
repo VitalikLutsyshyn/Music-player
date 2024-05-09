@@ -45,6 +45,29 @@
          <property name="currentIndex">
           <number>0</number>
          </property>
+         <widget class="QWidget" name="all_song">
+          <attribute name="title">
+           <string>Усі пісні</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QPushButton" name="addFolder">
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Додати папку </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListWidget" name="songlist"/>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="now_playing">
           <attribute name="title">
            <string>Зараз грає</string>
@@ -129,11 +152,6 @@
             </layout>
            </item>
           </layout>
-         </widget>
-         <widget class="QWidget" name="all_song">
-          <attribute name="title">
-           <string>Усі пісні</string>
-          </attribute>
          </widget>
         </widget>
        </item>
