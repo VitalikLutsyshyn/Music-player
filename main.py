@@ -21,6 +21,8 @@ class MusicPlayer(QMainWindow):
         self.player = QMediaPlayer()
         self.audioOutput = QAudioOutput()
         self.player.setAudioOutput(self.audioOutput)
+        self.player.durationChanged.connect(self.update_duration)
+        self.ui.timeline_slider.valueChanged.connect(self.player.setPosition)
 
         self.connects()
         self.files = None
@@ -29,6 +31,7 @@ class MusicPlayer(QMainWindow):
     def connects(self):
         self.ui.addFolder.clicked.connect(self.choose_files)
         self.ui.songlist.currentRowChanged.connect(self.open_song)
+        self.ui.play_btn.clicked.connect(self.play_song)
 
     def choose_files(self):
         try:
@@ -38,12 +41,25 @@ class MusicPlayer(QMainWindow):
         self.ui.songlist.addItems(self.files[0])
 
     def open_song(self):
-         if self.ui.songlist.currentRow() >= 0:#повертає номер рядка
-              self.current_song = self.ui.songlist.currentItem().text()#вибір поточної пісні
-              self.player.setSource(QUrl.fromLocalFile(self.current_song))
-              self.audioOutput.setVolume(50)
-              self.player.play()
-              
+        if self.ui.songlist.currentRow() >= 0:#повертає номер рядка
+            self.current_song = self.ui.songlist.currentItem().text()#вибір поточної пісні
+            self.player.setSource(QUrl.fromLocalFile(self.current_song))
+            self.audioOutput.setVolume(50)
+            self.player.play()
+
+    def play_song(self):
+        if self.player.isPlaying():
+            self.player.pause()
+        else:
+             self.player.play()
+    def update_duration(self,duration):
+         self.ui.timeline_slider.setMaximum(duration)
+         
+        
+
+         
+        
+        
 
 
 
