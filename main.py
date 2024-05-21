@@ -7,9 +7,6 @@ from ui_window import Ui_MainWindow
 from qt_material import apply_stylesheet
 
 
-
- 
-
 class MusicPlayer(QMainWindow):
     def __init__(self):
         super(MusicPlayer,self).__init__()
