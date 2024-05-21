@@ -158,7 +158,7 @@
        <item>
         <layout class="QHBoxLayout" name="timeline">
          <item>
-          <widget class="QLabel" name="total_time">
+          <widget class="QLabel" name="current_time">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
              <horstretch>0</horstretch>
@@ -184,7 +184,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="current_time">
+          <widget class="QLabel" name="total_time">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
              <horstretch>0</horstretch>

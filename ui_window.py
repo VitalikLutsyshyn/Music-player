@@ -116,20 +116,6 @@ class Ui_MainWindow(object):
 
         self.timeline = QHBoxLayout()
         self.timeline.setObjectName(u"timeline")
-        self.total_time = QLabel(self.frame_2)
-        self.total_time.setObjectName(u"total_time")
-        sizePolicy2.setHeightForWidth(self.total_time.sizePolicy().hasHeightForWidth())
-        self.total_time.setSizePolicy(sizePolicy2)
-        self.total_time.setMaximumSize(QSize(16777215, 50))
-
-        self.timeline.addWidget(self.total_time)
-
-        self.timeline_slider = QSlider(self.frame_2)
-        self.timeline_slider.setObjectName(u"timeline_slider")
-        self.timeline_slider.setOrientation(Qt.Horizontal)
-
-        self.timeline.addWidget(self.timeline_slider)
-
         self.current_time = QLabel(self.frame_2)
         self.current_time.setObjectName(u"current_time")
         sizePolicy2.setHeightForWidth(self.current_time.sizePolicy().hasHeightForWidth())
@@ -137,6 +123,20 @@ class Ui_MainWindow(object):
         self.current_time.setMaximumSize(QSize(16777215, 50))
 
         self.timeline.addWidget(self.current_time)
+
+        self.timeline_slider = QSlider(self.frame_2)
+        self.timeline_slider.setObjectName(u"timeline_slider")
+        self.timeline_slider.setOrientation(Qt.Horizontal)
+
+        self.timeline.addWidget(self.timeline_slider)
+
+        self.total_time = QLabel(self.frame_2)
+        self.total_time.setObjectName(u"total_time")
+        sizePolicy2.setHeightForWidth(self.total_time.sizePolicy().hasHeightForWidth())
+        self.total_time.setSizePolicy(sizePolicy2)
+        self.total_time.setMaximumSize(QSize(16777215, 50))
+
+        self.timeline.addWidget(self.total_time)
 
 
         self.verticalLayout_2.addLayout(self.timeline)
@@ -212,8 +212,8 @@ class Ui_MainWindow(object):
         self.song_name.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0432\u0430 \u043f\u0456\u0441\u043d\u0456", None))
         self.artist.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u043a\u043e\u043d\u0430\u0432\u0435\u0446\u044c:", None))
         self.tabs.setTabText(self.tabs.indexOf(self.now_playing), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0440\u0430\u0437 \u0433\u0440\u0430\u0454", None))
-        self.total_time.setText(QCoreApplication.translate("MainWindow", u"0:00", None))
         self.current_time.setText(QCoreApplication.translate("MainWindow", u"0:00", None))
+        self.total_time.setText(QCoreApplication.translate("MainWindow", u"0:00", None))
         self.prev_btn.setText("")
         self.play_btn.setText("")
         self.next_btn.setText("")
