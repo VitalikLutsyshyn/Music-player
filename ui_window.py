@@ -91,6 +91,7 @@ class Ui_MainWindow(object):
         self.song_name.setSizePolicy(sizePolicy2)
         self.song_name.setMaximumSize(QSize(16777215, 50))
         font1 = QFont()
+        font1.setPointSize(12)
         font1.setKerning(True)
         self.song_name.setFont(font1)
 
@@ -102,10 +103,20 @@ class Ui_MainWindow(object):
         self.artist.setSizePolicy(sizePolicy2)
         self.artist.setMaximumSize(QSize(16777215, 50))
         font2 = QFont()
+        font2.setPointSize(11)
         font2.setBold(False)
         self.artist.setFont(font2)
 
         self.verticalLayout.addWidget(self.artist)
+
+        self.album_year = QLabel(self.now_playing)
+        self.album_year.setObjectName(u"album_year")
+        font3 = QFont()
+        font3.setPointSize(9)
+        font3.setBold(False)
+        self.album_year.setFont(font3)
+
+        self.verticalLayout.addWidget(self.album_year)
 
 
         self.verticalLayout_4.addLayout(self.verticalLayout)
@@ -211,6 +222,7 @@ class Ui_MainWindow(object):
         self.song_img.setText("")
         self.song_name.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0432\u0430 \u043f\u0456\u0441\u043d\u0456", None))
         self.artist.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u043a\u043e\u043d\u0430\u0432\u0435\u0446\u044c:", None))
+        self.album_year.setText(QCoreApplication.translate("MainWindow", u"\u0410\u043b\u044c\u0431\u043e\u043c-\u0420\u0456\u043a", None))
         self.tabs.setTabText(self.tabs.indexOf(self.now_playing), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0440\u0430\u0437 \u0433\u0440\u0430\u0454", None))
         self.current_time.setText(QCoreApplication.translate("MainWindow", u"0:00", None))
         self.total_time.setText(QCoreApplication.translate("MainWindow", u"0:00", None))

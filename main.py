@@ -24,6 +24,7 @@ class MusicPlayer(QMainWindow):
         self.files = None
         self.current_song = None
         self.index = 0
+        self.song_names = []
 
     def connects(self):
         self.player.durationChanged.connect(self.update_duration)
@@ -34,6 +35,7 @@ class MusicPlayer(QMainWindow):
         self.ui.play_btn.clicked.connect(self.play_song)
         self.ui.prev_btn.clicked.connect(self.prev_song)
         self.ui.next_btn.clicked.connect(self.next_song)
+        self.player.metaDataChanged.connect(self.get_metadata)
         
 
     def choose_files(self):
@@ -42,7 +44,10 @@ class MusicPlayer(QMainWindow):
             self.song_list = self.files[0]
         except:
             print("спробуй ще раз")
-        self.ui.songlist.addItems(self.song_list)
+        for song in self.song_list:
+            name = song.split("/")[-1]
+            self.song_names.append(name)
+        self.ui.songlist.addItems(self.song_names)
 
     def load_song(self,index):
             if index >= 0 and index < len(self.song_list):
@@ -60,7 +65,7 @@ class MusicPlayer(QMainWindow):
             
 
     def play_song(self):
-        if self.player.playbackState() == QMediaPlayer.PlaybackState:
+        if self.player.playbackState() == QMediaPlayer.PlayingState:
             self.player.pause()
         else:
             self.player.play()
@@ -100,15 +105,25 @@ class MusicPlayer(QMainWindow):
         else:
             self.load_song(0)
 
-    
+    def get_metadata(self):
+        title = self.player.metaData().value(QMediaMetaData.Title) or self.song_names[self.current_index]
+        self.ui.song_name.setText(title)
 
-    
+        artist = self.player.metaData().value(QMediaMetaData.Author) or self.player.metaData().value(QMediaMetaData.AlbumArtist) or self.player.metaData().value(QMediaMetaData.ContributingArtist or "")
+        if isinstance(artist,list) and len(artist) > 0:
+            artist = artist[0]
+        self.ui.artist.setText(str(artist))
 
-
-
-    
-
+        album = self.player.metaData().value(QMediaMetaData.AlbumTitle) or ""
+        genre = self.player.metaData().value(QMediaMetaData.Genre) 
+        self.ui.album_year.setText(f'{album} - {", ".join(genre)}') 
+        
          
+
+
+
+
+
 app = QApplication([])#створення
 window = MusicPlayer()#створення вікна
 apply_stylesheet(app, theme='dark_blue.xml')
