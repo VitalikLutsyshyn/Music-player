@@ -1,10 +1,11 @@
 
 import random
-from PySide6.QtCore import Qt,QUrl,Slot
-from PySide6.QtWidgets import QApplication,QMainWindow,QPushButton,QLabel,QVBoxLayout, QWidget,QFileDialog
+from PySide6.QtCore import Qt,QUrl,Slot,QTime
+from PySide6.QtWidgets import QApplication,QMainWindow,QPushButton,QLabel,QVBoxLayout, QWidget,QFileDialog,
 from PySide6.QtMultimedia import *
 from ui_window import Ui_MainWindow
 from qt_material import apply_stylesheet
+from PySide6.QtGui import QPixmap,QIcon
 from datetime import* 
 
 
@@ -23,8 +24,10 @@ class MusicPlayer(QMainWindow):
         self.connects()
         self.files = None
         self.current_song = None
-        self.index = 0
+        self.current_index = 0
         self.song_names = []
+        self.play_icon = QIcon("imagion/player-play.png")
+        self.pause_icon = QIcon("imagion/pause.png")
 
     def connects(self):
         self.player.durationChanged.connect(self.update_duration)
@@ -51,11 +54,18 @@ class MusicPlayer(QMainWindow):
 
     def load_song(self,index):
             if index >= 0 and index < len(self.song_list):
+                self.player.stop()
                 self.player.setPosition(0)
+                self.update_duration(self.player.duration())
                 self.update_position(0)
-                self.current_index = index
-                self.player.setSource(QUrl.fromLocalFile(self.song_list[self.current_index]))
-                self.player.play()
+                self.current_index = index  
+                self.ui.songlist.setCurrentRow(self.current_index)
+
+                try:
+                    self.player.setSource(QUrl.fromLocalFile(self.song_list[self.current_index]))
+                    self.player.play()
+                except:
+                    print("can't load song")
 
     def open_song(self):
         if self.ui.songlist.currentRow() >= 0:#повертає номер рядка
@@ -67,8 +77,11 @@ class MusicPlayer(QMainWindow):
     def play_song(self):
         if self.player.playbackState() == QMediaPlayer.PlayingState:
             self.player.pause()
+            self.ui.play_btn.setIcon(self.pause_icon)
         else:
             self.player.play()
+            self.ui.play_btn.setIcon(self.play_icon)
+
     def update_duration(self,duration):
         self.ui.timeline_slider.setMaximum(duration)#загальна тривалість пісні
         self.ui.total_time.setText(self.get_time(duration))
@@ -76,8 +89,9 @@ class MusicPlayer(QMainWindow):
     def get_time(self,time_in_ms):
         seconds= time_in_ms/1000
         minutes,seconds = divmod(seconds,60)
+        time = QTime(0,minutes,seconds)
 
-        return  f"{int(minutes)}:{int(seconds)}"
+        return  time.toString()[3:]
 
     def update_position(self,position):
          if position > 0:
@@ -100,7 +114,7 @@ class MusicPlayer(QMainWindow):
 
     @Slot()
     def next_song(self):
-        if self.current_index <= len(self.song_list)-1:
+        if self.current_index < len(self.song_list)-1:
             self.load_song(self.current_index + 1)
         else:
             self.load_song(0)
@@ -119,9 +133,7 @@ class MusicPlayer(QMainWindow):
         self.ui.album_year.setText(f'{album} - {", ".join(genre)}') 
         
          
-
-
-
+   
 
 
 app = QApplication([])#створення
